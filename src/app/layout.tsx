@@ -5,13 +5,13 @@ import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 const mainFontFamily = Roboto({
     subsets: ['latin'],
-    weight: ['300', '500', '700']
+    weight: ['300', '500', '700'],
 });
 
 export const permanentMarker = Permanent_Marker({
-  weight: ['400'],
-  subsets: ['latin']
-})
+    weight: ['400'],
+    subsets: ['latin'],
+});
 
 export const metadata: Metadata = {
     title: 'Project Skill',
@@ -25,10 +25,14 @@ export default function RootLayout({
 }>) {
     return (
         <html lang="pt-br">
-            <body className={`bg-black text-white min-h-screen flex flex-col ${mainFontFamily.className}`}>
-                <Header/>
-                {children}
-                <Footer/>
+            <body
+                className={`min-h-screen flex flex-col ${mainFontFamily.className}`}
+            >
+                <Header />
+                <main className="flex-grow w-full py-4 sm:px-12 xl:px-16 text-center lg:text-start bg-gray-100 text-black">
+                    {children}
+                </main>
+                <Footer />
             </body>
         </html>
     );
