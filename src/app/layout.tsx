@@ -5,7 +5,7 @@ import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 const mainFontFamily = Roboto({
     subsets: ['latin'],
-    weight: ['300', '500', '700'],
+    weight: ['300', '500', '700', '900'],
 });
 
 export const permanentMarker = Permanent_Marker({

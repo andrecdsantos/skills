@@ -3,7 +3,7 @@ import { useRef } from 'react';
 import { data } from '../../data/data.js';
 import { FaArrowAltCircleLeft, FaArrowAltCircleRight } from 'react-icons/fa';
 
-const page = () => {
+const carouselAnimated = () => {
     //await new Promise(resolve=> setTimeout(resolve,8000))
     const carousel = useRef(null);
     const shoes = useRef(null);
@@ -66,4 +66,4 @@ const page = () => {
     );
 };
 
-export default page;
+export default carouselAnimated;
