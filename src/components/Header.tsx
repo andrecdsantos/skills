@@ -39,8 +39,9 @@ export const Header = () => {
                 <div className="gap-3 flex flex-col lg:flex-row w-max text-black text-center text-lg">
                     <Link  href={"/"} className={`${pathName === '/' ? 'bg-teal-200' : 'bg-purple-300'} hover:bg-teal-200 py-3 px-5 rounded-3xl`} onClick={toggleNav}>Home</Link>
                     <Link  href={"/carousel"} className={`${pathName === '/carousel' ? 'bg-teal-200' : 'bg-purple-300'} hover:bg-teal-200 py-3 px-5 rounded-3xl`} onClick={toggleNav}>Carrossel</Link>
-                    <Link  href={"/carousel-animated"} className={`${pathName === '/carousel-animated' ? 'bg-teal-200' : 'bg-purple-300'} hover:bg-teal-200 py-3 px-5 rounded-3xl`} onClick={toggleNav}>Carrossel Animado</Link>
+                    <Link  href={"/carousel-animated"} className={`${pathName === '/carousel-animated' ? 'bg-teal-200' : 'bg-purple-300'} hover:bg-teal-200 py-3 px-5 rounded-3xl inline lg:hidden`} onClick={toggleNav}>Carrossel Animado</Link>
                     <Link  href={"/registration"} className={`${pathName === '/registration' ? 'bg-teal-200' : 'bg-purple-300'} hover:bg-teal-200 py-3 px-5 rounded-3xl`} onClick={toggleNav}>Cadastrar</Link>
+                    <Link  href={"/flip"} className={`${pathName === '/flip' ? 'bg-teal-200' : 'bg-purple-300'} hover:bg-teal-200 py-3 px-5 rounded-3xl inline lg:hidden`} onClick={toggleNav}>Flip</Link>
                 </div>
             </div>
             <form className="hidden lg:inline text-xl flex justify-center">

@@ -8,12 +8,15 @@ const carouselAnimated = () => {
     const carousel = useRef(null);
     const shoes = useRef(null);
 
-    const handleCarouselClick = (e, direction) => {
+    const handleCarouselClick = (e: React.MouseEvent, direction: string) => {
         e.preventDefault();
-        direction === 'left'
-            ? (carousel.current.scrollLeft -= shoes.current.offsetWidth)
-            : (carousel.current.scrollLeft += shoes.current.offsetWidth);
+        if (carousel.current && shoes.current) {
+            direction === 'left'
+                ? (carousel.current.scrollLeft -= shoes.current.offsetWidth)
+                : (carousel.current.scrollLeft += shoes.current.offsetWidth);
+        }
     };
+    
 
     return (
         <>

@@ -1,67 +1,114 @@
-'use client'
-import RegistrationForm from "@/components/RegistrationForm"
-import RegistrationTable from "@/components/RegistrationTable"
-import { useState } from "react"
+'use client';
+import RegistrationForm from '@/components/RegistrationForm';
+import RegistrationTable from '@/components/RegistrationTable';
+import { useState, useEffect } from 'react';
 
 const register = () => {
-  const [btnRegister, setBtnRegister] = useState(true)
-  const [title, setTitle] = useState("")
-  const [description, setDescription] = useState("")
-  const [shoes, setShoes] = useState([])
-  const [shoesIndex, setShoesIndex] = useState('')
+    const [btnRegister, setBtnRegister] = useState(true);
+    const [title, setTitle] = useState('');
+    const [description, setDescription] = useState('');
+    const [brand, setBrand] = useState('')
+    const [shoes, setShoes] = useState([]);
+    const [shoesIndex, setShoesIndex] = useState('');
+    const [errors, setErrors] = useState('')
+    const [submitted, setSubmitted] = useState(false)
 
-  const validade = () => {
+    useEffect(() => {
+        const data = JSON.parse(localStorage.getItem('shoes'));
+        if (data) setShoes(data);
+    }, []);
 
-  }
+    const validate = () => {
+      if(!title){
+        setErrors('O titulo é obrigatório')
+        return
+      }
+      if(!description){
+        setErrors('A descrição do produto é obrigatória')
+        return
+      }
+      if(!brand){
+        setErrors('Selecione uma marca')
+        return
+      }
+      return true
+    };
 
-  const cleanFields = () => {
-    setTitle('')
-    setDescription('')
-  }
+    const cleanFields = () => {
+        setTitle('');
+        setDescription('');
+        setBrand('')
+        setErrors('')
+    };
 
-  const onSave = (e) => {
-    e.preventDefault()
-    setShoes(prevShoes=>[...prevShoes, {title, description}])
-    cleanFields()
-  }
+    const onSave = (e) => {
+        e.preventDefault();
+        setSubmitted(true)
+        const errorValidation = validate()
+        if(!errorValidation) return
+        setShoes((prevShoes) => [...prevShoes, { title, description, brand }]);
+        localStorage.setItem('shoes', JSON.stringify([...shoes, { title, description, brand }]));
+        cleanFields();
+    };
 
-  const onUpdate = (e) => {
-    e.preventDefault()
-    const copyShoes = [...shoes]
-    copyShoes[shoesIndex] = {title, description}
-    setShoes(copyShoes)
-    cleanFields()
-    setBtnRegister(true)
-  }
+    const onUpdate = (e) => {
+        e.preventDefault();
+        setSubmitted(true)
+        const copyShoes = [...shoes];
+        copyShoes[shoesIndex] = { title, description, brand };
+        setShoes(copyShoes);
+        localStorage.setItem('shoes', JSON.stringify([...copyShoes]))
+        cleanFields();
+        setBtnRegister(true);
+    };
 
-  const onDelete = (e) => {
-    e.preventDefault()
-    const copyShoes = [...shoes]
-    copyShoes.splice(shoesIndex, 1) 
-    setShoes(copyShoes)
-    cleanFields()
-    setBtnRegister(true)
-  }
+    const onDelete = (e) => {
+        e.preventDefault();
+        const copyShoes = [...shoes];
+        copyShoes.splice(shoesIndex, 1);
+        setShoes(copyShoes);
+        localStorage.setItem('shoes', JSON.stringify([...copyShoes]))
+        cleanFields();
+        setBtnRegister(true);
+        setSubmitted(false)
+    };
 
-   const onSelect = (index) => {
-    setShoesIndex(index)//setando para poder depois usar em onDelete, update...
-    setTitle(shoes[index].title)
-    setDescription(shoes[index].description)
-    setBtnRegister(false)
-   }
+    const onSelect = (index) => {
+        setShoesIndex(index); //setando para poder depois usar em onDelete, update...
+        setTitle(shoes[index].title);
+        setDescription(shoes[index].description);
+        setBrand(shoes[index].brand)
+        setBtnRegister(false);
+        setSubmitted(false)
+    };
 
-   const onCancel = (e) => {
-    e.preventDefault()
-    setBtnRegister(true)
-    cleanFields()
-   }
-  return (
-    <div>
-        <h1 className='text-center text-5xl'>Cadastros...</h1>
-        <RegistrationForm btnRegister={btnRegister} title={title} setTitle={setTitle} description={description} setDescription={setDescription} onSave={onSave} onUpdate={onUpdate} onDelete={onDelete} onCancel={onCancel}/>
-        <RegistrationTable shoes={shoes} onSelect={onSelect}/>
-    </div>
-  )
-}
+    const onCancel = (e) => {
+        e.preventDefault();
+        setBtnRegister(true);
+        cleanFields();
+        setSubmitted(false)
+    };
+    return (
+        <div>
+            <h1 className="text-center text-5xl">Cadastros...</h1>
+            <RegistrationForm
+                btnRegister={btnRegister}
+                title={title}
+                setTitle={setTitle}
+                description={description}
+                setDescription={setDescription}
+                brand={brand}
+                errors={errors}
+                submitted={submitted}
+                setBrand={setBrand}
+                onSave={onSave}
+                onUpdate={onUpdate}
+                onDelete={onDelete}
+                onCancel={onCancel}
+            />
+            <RegistrationTable shoes={shoes} onSelect={onSelect} />
+        </div>
+    );
+};
 
-export default register
+export default register;

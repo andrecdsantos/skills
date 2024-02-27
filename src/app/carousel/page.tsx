@@ -9,12 +9,14 @@ const carousel = () => {
     const carousel = useRef(null);
     const shoes = useRef(null);
 
-    const handleCarouselClick = (e, direction) => {
-        e.preventDefault();
-        direction === 'left'
-            ? (carousel.current.scrollLeft -= shoes.current.offsetWidth + 24)/* offsetWidth + o gap-x-6 =24px */
-            : (carousel.current.scrollLeft += shoes.current.offsetWidth + 24);
-    };
+    const handleCarouselClick = (e: React.MouseEvent, direction: string) => {
+      e.preventDefault();
+      if (carousel.current && shoes.current) {
+          direction === 'left'
+              ? (carousel.current.scrollLeft -= shoes.current.offsetWidth + 24)/* offsetWidth + o gap-x-6 =24px */
+              : (carousel.current.scrollLeft += shoes.current.offsetWidth +24);
+      }
+  };
 
     return (
         <>
