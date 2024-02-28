@@ -13,8 +13,8 @@ const Carousel = () => {
       e.preventDefault();
       if (carousel.current && shoes.current) {
           direction === 'left'
-              ? (carousel.current.scrollLeft -= shoes.current.offsetWidth + 24)/* offsetWidth + o gap-x-6 =24px */
-              : (carousel.current.scrollLeft += shoes.current.offsetWidth +24);
+              ? (carousel.current.scrollLeft -= shoes.current.offsetWidth + 24 )/* offsetWidth + o gap-x-6 =24px */
+              : (carousel.current.scrollLeft += shoes.current.offsetWidth +24 );
       }
   };
 
@@ -53,8 +53,8 @@ const Carousel = () => {
               >
                 <FaArrowAltCircleRight className="bg-black rounded-full" />
               </button>
-              <div className="h-full w-6 md:w-14 lg:w-32 bg-gradient-to-l from-gray-100 absolute right-0 -top-4"></div>
-              <div className="h-full w-6 md:w-14 lg:w-32  bg-gradient-to-r from-gray-100 absolute left-0 -top-4"></div>
+              <div className="h-full w-6 lg:w-12 bg-gradient-to-l from-gray-100 absolute right-0 top-0"></div>
+              <div className="h-full w-6 lg:w-12  bg-gradient-to-r from-gray-100 absolute left-0 top-0"></div>
             </div>
         </>
     );
