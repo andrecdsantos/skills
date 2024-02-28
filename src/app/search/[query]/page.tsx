@@ -7,7 +7,7 @@ const query = ( { params }) => {
     const shoes = data.filter(item=> keywords.every(word=> item.name.toUpperCase().includes(word)))
   return (
     <div>
-        <h1 className='text-center text-xl mb-8'>Resultados da busca por: <b>"{params.query}"</b></h1>
+        <h1 className='text-center text-xl mb-8'>Resultados da busca por: <b>{params.query}</b></h1>
         <div className='flex flex-wrap justify-center gap-x-10 gap-y-14'>
             {shoes.map(item=>
                 <Link href={`/shoes/${item.id}`} key={item.id}>

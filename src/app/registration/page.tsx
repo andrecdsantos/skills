@@ -3,7 +3,7 @@ import RegistrationForm from '@/components/RegistrationForm';
 import RegistrationTable from '@/components/RegistrationTable';
 import { useState, useEffect } from 'react';
 
-const register = () => {
+const Register = () => {
     const [btnRegister, setBtnRegister] = useState(true);
     const [title, setTitle] = useState('');
     const [description, setDescription] = useState('');
@@ -111,4 +111,4 @@ const register = () => {
     );
 };
 
-export default register;
+export default Register;

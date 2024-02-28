@@ -4,7 +4,7 @@ import { data } from '../../data/data.js';
 import { FaArrowAltCircleLeft, FaArrowAltCircleRight } from 'react-icons/fa';
 import Link from 'next/link.js';
 
-const carousel = () => {
+const Carousel = () => {
     //await new Promise(resolve=> setTimeout(resolve,8000))
     const carousel = useRef(null);
     const shoes = useRef(null);
@@ -60,4 +60,4 @@ const carousel = () => {
     );
 };
 
-export default carousel;
+export default Carousel;
