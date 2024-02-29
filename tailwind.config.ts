@@ -16,11 +16,16 @@ const config: Config = {
             keyframes: {
                 infinito: {
                     '0%': { transform: 'translateX(0)' },
-                    '100%': { transform: 'translateX(100%)' },
+                    '100%': { transform: 'translateX(50%)' },
+                },
+                infinitoReverse: {
+                    '0%': { transform: 'translateX(0)' },
+                    '100%': { transform: 'translateX(-50%)' },
                 },
             },
             animation: {
-                infinito: 'infinito 5s infinite linear',
+                infinito: 'infinito 105s infinite linear',
+                infinitoReverse: 'infinitoReverse 105s infinite linear',
             },
         },
     },
