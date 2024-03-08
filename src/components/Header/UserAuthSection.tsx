@@ -1,4 +1,4 @@
-import LoginBtn from "@/app/login/LoginBtn"
+import LoginBtn from "@/app/login/LoginGoogleBtn"
 import LogoutBtn from "@/app/login/LogoutBtn"
 import { getServerSession } from "next-auth"
 import { redirect } from "next/navigation"

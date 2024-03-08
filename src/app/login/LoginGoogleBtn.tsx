@@ -2,7 +2,7 @@
 import { signIn } from "next-auth/react";
 import { FcGoogle } from "react-icons/fc";
 
-const LoginBtn = () => {
+const LoginGoogleBtn = () => {
   return (
     <button 
         className="flex gap-2 items-center border border-neutral-900 p-2 rounded-md"
@@ -14,4 +14,4 @@ const LoginBtn = () => {
   )
 }
 
-export default LoginBtn
+export default LoginGoogleBtn
