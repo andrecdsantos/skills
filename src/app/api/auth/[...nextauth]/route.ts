@@ -2,6 +2,35 @@ import NextAuth from "next-auth"
 import GoogleProvider from "next-auth/providers/google";
 import CredentialsProvider from "next-auth/providers/credentials"
 import GitHubProvider from "next-auth/providers/github";
+import { NextAuthOptions } from "next-auth";
+
+/* const authOptions: NextAuthOptions = {
+  providers: [
+
+  ],
+  callbacks: {
+    jwt({token, user}) {
+      const customUser = user as unknown as any 
+      if(user) {
+        return {
+          ...token,
+          role: customUser.role
+        }
+      }
+      return token
+    },
+    session: async ({ session, token }) => {
+      return {
+        ...session,
+        user: {
+          name: token.name,
+          email: token.email,
+          role: token.role
+        }
+      }
+    }
+  }
+} */
 
 const handler = NextAuth({
       pages: {

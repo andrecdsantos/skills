@@ -5,6 +5,7 @@ import LogoutBtn from "../login/LogoutBtn"
 
 const Profile = async () => {
     const session = await getServerSession()
+    console.log(session)
     if(!session) {
         return redirect("/login")
     }
@@ -24,6 +25,7 @@ const Profile = async () => {
             }
         </div>
         <LogoutBtn/>
+        {/* <pre className="bg-black text-white p-4">{JSON.stringify(session, null, 2)}</pre> */}
     </div>
   )
 }
