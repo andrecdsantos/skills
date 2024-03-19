@@ -6,9 +6,19 @@ import { Suspense, useEffect, useState } from "react";
 import { FaExternalLinkAlt } from "react-icons/fa";
 import Loading from "./loading";
 
+export type Repository = {
+  id: number;
+  name: string;
+  description: string;
+  html_url: string;
+  languages_url: string;
+  /* languages_url: {
+    [key: string] : string;
+  } */
+}
 
 export default function Home() {
-  const [repositories, setRepositories] = useState([])
+  const [repositories, setRepositories] = useState<Repository[]>([])
   useEffect(()=> {
     const getRepositories = async () => {
       const response = await fetch('https://api.github.com/users/andrecdsantos/repos')

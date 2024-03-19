@@ -2,7 +2,7 @@
 import { useEffect } from 'react'
 import { data } from '../../../data/data.js'
 
-const shoesId = ( {params} ) => {
+const shoesId = ( {params} : { params : { id : string }} ) => {
     const shoes = data.find(item=> item.id === params.id)  
 
   return (

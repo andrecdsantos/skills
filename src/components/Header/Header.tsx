@@ -2,14 +2,20 @@
 import { TbBrandAngular } from "react-icons/tb";
 import { FaBars, FaRegWindowClose  } from "react-icons/fa";
 import { MdExpandLess, MdExpandMore } from "react-icons/md";
-import { useState } from "react";
+import { EventHandler, MouseEvent, FunctionComponent, KeyboardEvent, ReactComponentElement, useState } from "react";
 import { usePathname } from "next/navigation";
 import { useRouter } from 'next/navigation'
 import FormSearch from "./FormSearch";
 import UserAuthSection from "./UserAuthSection";
 import Link from "next/link";
 
-export const Header = () => {
+/* export type HeaderProps = {
+    handleKeyPressed: (e: KeyboardEvent<HTMLInputElement>) => void;
+    handleKeyPressed: (e: KeyboardEvent<Document> | KeyboardEvent<HTMLInputElement>) => void;
+    searchShoes: (e: MouseEvent<HTMLButtonElement>) => void;
+} */
+
+const Header= () => {
     const pathName = usePathname()
     const router = useRouter()
     const [isClicked, setIsClicked] = useState(false)
@@ -53,15 +59,22 @@ export const Header = () => {
         }
     ]
 
-    const searchShoes = (e) => {
+    const searchShoes = (e: MouseEvent<HTMLButtonElement>) => {
         if(query.trim() !== '') {
             e.preventDefault()
             router.push(`/search/${query}`)
         }
     }
 
-    const handleKeyPressed = (e) => {
-        if(e.key === 'Enter') searchShoes(e)
+    const handleSearchShoes = (e: KeyboardEvent<HTMLInputElement>) => {
+        if (query.trim() !== '') {
+            e.preventDefault();
+            router.push(`/search/${query}`);
+        }
+    }
+
+    const handleKeyPressed = (e: KeyboardEvent<HTMLInputElement>) => {
+        if (e.key === 'Enter') handleSearchShoes(e);
     }
 
     return (

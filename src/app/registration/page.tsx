@@ -1,20 +1,26 @@
 'use client';
 import RegistrationForm from '@/components/RegistrationForm';
 import RegistrationTable from '@/components/RegistrationTable';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, MouseEvent } from 'react';
+
+export type Shoe = {
+    title: string;
+    description: string;
+    brand: string;
+}
 
 const Register = () => {
     const [btnRegister, setBtnRegister] = useState(true);
     const [title, setTitle] = useState('');
     const [description, setDescription] = useState('');
     const [brand, setBrand] = useState('')
-    const [shoes, setShoes] = useState([]);
-    const [shoesIndex, setShoesIndex] = useState('');
+    const [shoes, setShoes] = useState<Shoe[]>([]);
+    const [shoesIndex, setShoesIndex] = useState<number>(0);
     const [errors, setErrors] = useState('')
     const [submitted, setSubmitted] = useState(false)
 
     useEffect(() => {
-        const data = JSON.parse(localStorage.getItem('shoes'));
+        const data = JSON.parse(localStorage.getItem('shoes')!);
         if (data) setShoes(data);
     }, []);
 
@@ -41,7 +47,7 @@ const Register = () => {
         setErrors('')
     };
 
-    const onSave = (e) => {
+    const onSave = (e: MouseEvent<HTMLButtonElement>) => {
         e.preventDefault();
         setSubmitted(true)
         const errorValidation = validate()
@@ -51,7 +57,7 @@ const Register = () => {
         cleanFields();
     };
 
-    const onUpdate = (e) => {
+    const onUpdate = (e: MouseEvent<HTMLButtonElement>) => {
         e.preventDefault();
         setSubmitted(true)
         const copyShoes = [...shoes];
@@ -62,7 +68,7 @@ const Register = () => {
         setBtnRegister(true);
     };
 
-    const onDelete = (e) => {
+    const onDelete = (e : MouseEvent<HTMLButtonElement>) => {
         e.preventDefault();
         const copyShoes = [...shoes];
         copyShoes.splice(shoesIndex, 1);
@@ -73,7 +79,7 @@ const Register = () => {
         setSubmitted(false)
     };
 
-    const onSelect = (index) => {
+    const onSelect = (index: number) => {
         setShoesIndex(index); //setando para poder depois usar em onDelete, update...
         setTitle(shoes[index].title);
         setDescription(shoes[index].description);
@@ -82,7 +88,7 @@ const Register = () => {
         setSubmitted(false)
     };
 
-    const onCancel = (e) => {
+    const onCancel = (e : MouseEvent<HTMLButtonElement>) => {
         e.preventDefault();
         setBtnRegister(true);
         cleanFields();

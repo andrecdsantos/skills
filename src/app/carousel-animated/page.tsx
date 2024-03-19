@@ -4,8 +4,8 @@ import { useRef } from 'react';
 import { data } from '../../data/data.js';
 
 const CarouselAnimated = () => {
-    const carousel = useRef(null);
-    const shoes = useRef(null);
+    const carousel = useRef<HTMLDivElement>(null);
+    const shoes = useRef<HTMLImageElement>(null);
     const duplicatedData = [...data,...data]
 
     const handleCarouselClick = (e: React.MouseEvent, direction: string) => {

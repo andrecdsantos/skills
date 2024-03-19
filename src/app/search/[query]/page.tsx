@@ -1,7 +1,7 @@
 import Link from 'next/link.js'
 import { data } from '../../../data/data.js'
 
-const query = ( { params }) => {
+const query = ( { params } : {params: {query : string} }) => {
     const decodedQuery = decodeURIComponent(params.query);//por params os espacos em branco sao representados por %20, este trecho esta convertendo os %20 em espacoes em branco novamente
     const keywords = decodedQuery.trim().toUpperCase().split(' ')
     const shoes = data.filter(item=> keywords.every(word=> item.name.toUpperCase().includes(word)))

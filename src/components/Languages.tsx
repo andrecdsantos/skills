@@ -9,8 +9,8 @@ import {
     SiHtml5,
 } from 'react-icons/si';
 
-const Languages = ({ urlLanguage }) => {
-    const [languages, setLanguages] = useState([]);
+const Languages = ({ urlLanguage } : {urlLanguage: string}) => {
+    const [languages, setLanguages] = useState<string[]>([]);
     useEffect(() => {
         const getLanguages = async () => {
             try {
@@ -24,7 +24,7 @@ const Languages = ({ urlLanguage }) => {
         getLanguages();
     }, []);
 
-    const renderIcon = (language) => {
+    const renderIcon = (language: string) => {
       if (language.toUpperCase().includes('CSS')) {
           return <SiCss3 className="text-blue-600" />;
       } else if (language.toUpperCase().includes('SCSS')) {

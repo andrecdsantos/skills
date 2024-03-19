@@ -1,10 +1,19 @@
 'use client'
 
+import { KeyboardEvent, MouseEvent, SetStateAction } from "react";
 import { FaSearch } from "react-icons/fa"
 
-const FormSearch = ( {query, setQuery, handleKeyPressed, searchShoes} ) => {
+type FormProps = {
+    handleKeyPressed: (e: KeyboardEvent<HTMLInputElement>) => void;
+    //handleKeyPressed: (e: KeyboardEvent<Document> | KeyboardEvent<HTMLInputElement>) => void;
+    searchShoes: (e: MouseEvent<HTMLButtonElement>) => void;
+    query: string;
+    setQuery: React.Dispatch<SetStateAction<string>>
+}
+
+const FormSearch = ( {query, setQuery, handleKeyPressed, searchShoes}: FormProps ) => {
   return (
-    <form className="hidden lg:inline text-xl flex justify-center">
+    <form className="hidden lg:inline text-xl justify-center">
                 <input 
                     type="search" 
                     value={query}

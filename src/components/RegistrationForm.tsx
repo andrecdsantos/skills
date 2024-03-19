@@ -1,12 +1,28 @@
+import { Dispatch, MouseEvent, SetStateAction } from "react";
 
+interface RegitrationFormProps {
+    btnRegister: boolean; 
+    title: string; 
+    setTitle: Dispatch<SetStateAction<string>>; 
+    description: string; 
+    setDescription: Dispatch<SetStateAction<string>>;
+    brand: string;
+    setBrand: Dispatch<SetStateAction<string>>;
+    errors: string;
+    submitted: boolean;
+    onSave: (e: MouseEvent<HTMLButtonElement>) => void;
+    onUpdate: (e: MouseEvent<HTMLButtonElement>) => void;
+    onDelete: (e: MouseEvent<HTMLButtonElement>) => void;
+    onCancel: (e: MouseEvent<HTMLButtonElement>) => void
+}
 
-const RegistrationForm = ( {btnRegister, title, setTitle, description, setDescription, brand, setBrand, errors, submitted, onSave, onUpdate, onDelete, onCancel } ) => {
+const RegistrationForm = ( {btnRegister, title, setTitle, description, setDescription, brand, setBrand, errors, submitted, onSave, onUpdate, onDelete, onCancel } : RegitrationFormProps ) => {
     const brands = [
         "NIKE",
         "ADIDAS",
         "MIZUNO",
         "NEW BALANCE",
-        "OLYMPICUS",
+        "OLYMPIKUS",
         "PUMA",
     ]
   

@@ -6,8 +6,8 @@ import Link from 'next/link.js';
 
 const Carousel = () => {
     //await new Promise(resolve=> setTimeout(resolve,8000))
-    const carousel = useRef(null);
-    const shoes = useRef(null);
+    const carousel = useRef<HTMLDivElement>(null);
+    const shoes = useRef<HTMLImageElement>(null);
 
     const handleCarouselClick = (e: React.MouseEvent, direction: string) => {
       e.preventDefault();

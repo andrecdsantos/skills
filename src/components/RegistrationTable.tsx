@@ -1,7 +1,14 @@
 'use client';
 import { useState } from 'react';
+import { Shoe } from '@/app/registration/page';
+import { MouseEvent  } from "react";
 
-const RegistrationTable = ({ shoes, onSelect}) => {
+interface RegistrationTableProps {
+    shoes: Shoe[];
+    onSelect: (index: number) => void
+}
+
+const RegistrationTable = ({ shoes, onSelect} : RegistrationTableProps) => {
     const [query, setQuery] = useState('');
     return (
         <>
@@ -18,7 +25,7 @@ const RegistrationTable = ({ shoes, onSelect}) => {
                     <tr className="*:border-2 *:border-black">
                         <th>#</th>
                         <th>Produto</th>
-                        <th>Descricao</th>
+                        <th>Descrição</th>
                         <th>Marca</th>
                         <th>Selecionar</th>
                     </tr>
